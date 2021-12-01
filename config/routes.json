@@ -1,0 +1,60 @@
+{
+  "routes": [
+    {
+      "label": "What zup?",
+      "path": "hello-world",
+      "handler": {
+        "export": "default",
+        "module": "$import(./modules/hello-world)"
+      },
+      "methods": [
+        "GET",
+        "POST"
+      ],
+      "corsPolicy": "AnythingGoes",
+      "version": "v1",
+      "policies": {
+        "inbound": ["basic-auth-policy"]
+      }
+    }
+  ],
+  "versions": [
+    {
+      "name": "none",
+      "pathPrefix": ""
+    },
+    {
+      "name": "v1",
+      "pathPrefix": "v1/"
+    }
+  ],
+  "policies": [
+    {
+      "name": "basic-auth-policy",
+      "policyType": "basic-auth-inbound-policy",
+      "handler": {
+        "export": "BasicAuthInboundPolicy",
+        "module": "$import(@zuplo/runtime)",
+        "options": {
+          "allowUnauthenticatedRequests": false,
+          "accounts": [
+            {
+              "username": "test-username",
+              "password": "$env(BASIC_PASSWORD_1)",
+              "data": {
+                "number": 1
+              }
+            },
+            {
+              "username": "test-username-2",
+              "password": "$env(BASIC_PASSWORD_2)",
+              "data": {
+                "number": 2
+              }
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

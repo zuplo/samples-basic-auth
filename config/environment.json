@@ -1,0 +1,10 @@
+{
+  "environmentVariables": {
+    "BASIC_PASSWORD_1": {
+      "variableType": "Secret"
+    },
+    "BASIC_PASSWORD_2": {
+      "variableType": "Secret"
+    }
+  }
+}
