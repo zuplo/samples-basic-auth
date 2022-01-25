@@ -2,7 +2,7 @@
   "routes": [
     {
       "label": "What zup?",
-      "path": "hello-world",
+      "path": "/hello-world",
       "handler": {
         "export": "default",
         "module": "$import(./modules/hello-world)"
@@ -11,7 +11,7 @@
         "GET",
         "POST"
       ],
-      "corsPolicy": "AnythingGoes",
+      "corsPolicy": "anything-goes",
       "version": "v1",
       "policies": {
         "inbound": ["basic-auth-policy"]
@@ -25,7 +25,7 @@
     },
     {
       "name": "v1",
-      "pathPrefix": "v1/"
+      "pathPrefix": "/v1"
     }
   ],
   "policies": [
@@ -40,14 +40,14 @@
           "accounts": [
             {
               "username": "test-username",
-              "password": "$env(BASIC_PASSWORD_1)",
+              "password": "password-1",
               "data": {
                 "number": 1
               }
             },
             {
               "username": "test-username-2",
-              "password": "$env(BASIC_PASSWORD_2)",
+              "password": "password-2",
               "data": {
                 "number": 2
               }
